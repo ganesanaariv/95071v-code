@@ -1014,7 +1014,7 @@ task::sleep(10);
 void autonomous(void) {
 auto_started = true;
 switch(current_auton_selection){
-case 1: //SOLO AWP
+case 0: //SOLO AWP
 
 descore.set(true);
 indexer.set(true);
@@ -1291,7 +1291,7 @@ chassis.drive_distance(-30,180,3,3,1,100,2500);
 
 break;
 
-case 0: //Right Side 7 Ball Descore Auton
+case 2: //Right Side 7 Ball Descore Auton
 
 
 scorer.stop(hold);
@@ -1364,7 +1364,7 @@ chassis.turn_to_angle(180);
 break;
 
 
-case 2: //Left Side 4+5
+case 1: //Left Side 4+5
 
 hardStop.set(true);
 
