@@ -1046,7 +1046,8 @@ scorer.spin(forward,100,percent);
 
 chassis.drive_distance(-30,90,3,3,1,100,600);
 
-wait(700,msec);
+wait(600,msec);
+chassis.drive_distance(-30,90,3,3,1,100,200);
 
 Matchloader.set(false);
 
@@ -1128,7 +1129,6 @@ indexer.set(true);
 
 chassis.turn_to_angle(90,12,10,10,1000);
 chassis.drive_distance(30,90,4,12,1,100,1400);
-
 
 
 chassis.drive_distance(-30,90,12,12,1,100,500); //replace other one if this works
@@ -1292,7 +1292,7 @@ chassis.drive_distance(-30,180,3,3,1,100,2500);
 break;
 
 case 2: //Right Side 7 Ball Descore Auton
-
+indexer.set(true);
 
 scorer.stop(hold);
 secondstage.spin(forward,100,percent);
@@ -1312,10 +1312,10 @@ chassis.turn_to_angle(140,12,5,1,3000);
 
 
 
-chassis.drive_distance(12.7,150,12,12); //tried 0 settle time change to 13.6
+chassis.drive_distance(12.4,150,12,12); //tried 0 settle time change to 13.6
 
 chassis.turn_to_angle(180);
-chassis.drive_distance(30,180,3,12,1,100,1200); 
+chassis.drive_distance(30,180,3,12,1,100,1000); 
 
 
 
@@ -1337,7 +1337,7 @@ Matchloader.set(false);
 
 
 
-wait(1200,msec);
+wait(1500,msec);
 
 chassis.turn_to_angle(180);
 chassis.set_coordinates(0,0,0);
@@ -1367,6 +1367,7 @@ break;
 case 1: //Left Side 4+5
 
 hardStop.set(true);
+indexer.set(true);
 
 secondstage.spin(forward,100,percent);
 
@@ -1374,7 +1375,7 @@ scorer.spin(reverse,10,percent);
 
 chassis.drive_distance(13.6,310,5,2);
 
-chassis.drive_distance(7.7,300,5,2,1,10,3000);
+chassis.drive_distance(7.2,300,3,2,1,10,3000);
 
 
 
@@ -1387,7 +1388,6 @@ chassis.drive_distance(-9.8,285);
 
 
 
-secondstage.spinFor(reverse,50,degrees,false);
 
 chassis.turn_to_angle(225);
 
@@ -1396,7 +1396,7 @@ scorer.stop();
 
 scorer.spin(reverse,100,percent);
 
-indexer.set(true);
+indexer.set(false);
 hardStop.set(false);
 
 
@@ -1414,7 +1414,7 @@ chassis.drive_distance(-30,225,2,12,1,100,500);
 
 
 
-wait(600,msec);
+wait(700,msec);
 secondstage.stop(hold);
 scorer.stop(hold);
 
@@ -1433,14 +1433,13 @@ scorer.stop(hold);
 //chassis.drive_to_point(-0.3,15.7,4,12,12);
 
 //
-
+indexer.set(true);
 chassis.drive_distance(18.1,220);
 
 //chassis.drive_distance(17.1,135);
 secondstage.spin(forward,100,percent);
 
 hardStop.set(true);
-indexer.set(false);
 
 
 //chassis.turn_to_angle(90,12,5,50,1000);
@@ -1469,7 +1468,7 @@ chassis.drive_distance(3);
 
 scorer.stop();
 
-chassis.drive_distance(-2.8,50,12,12);
+chassis.drive_distance(-2.6,50,12,12);
 
 chassis.drive_distance(-9,340);
 
@@ -1769,6 +1768,7 @@ void usercontrol(void) {
 
 
 vex::task driveTask = vex::task( driveFunction );
+
 
 
 
