@@ -662,6 +662,8 @@ indexer.set(true);
        scorer.stop(hold);
        middleEnabled = false;
      } else {
+      scorer.stop();
+      lowEnabled = false;
        secondstage.spin(forward,100,percent);
 
        middleEnabled = true;
@@ -739,7 +741,7 @@ indexer.set(true);
       // hardStop.set(false);
 
       scorer.spin(reverse,100,percent);
-      secondstage.spin(forward,100,percent);
+      secondstage.spin(forward,50,percent);
        wait(250,msec);
 
        test2 = true;
@@ -1014,202 +1016,83 @@ task::sleep(10);
 void autonomous(void) {
 auto_started = true;
 switch(current_auton_selection){
-case 0: //SOLO AWP
-
+case 2: //SOLO AWP
 descore.set(true);
-indexer.set(true);
-secondstage.spin(forward,100,percent);
+      indexer.set(true);
+      secondstage.spin(forward,100,percent);
 
-chassis.drive_distance(12.5);
+      chassis.drive_distance(12.5);
 
-Matchloader.set(true);
+      Matchloader.set(true);
 
-secondstage.spin(forward,100,percent);
+      secondstage.spin(forward,100,percent);
 
-chassis.turn_to_angle(90,12,10,10,1000);
+      chassis.turn_to_angle(90,12,10,10,1000);
 
-chassis.drive_distance(3,90);
+      chassis.drive_distance(3,90);
 
+      chassis.drive_distance(32.2,80,4,12,1,100,700);
 
-chassis.drive_distance(30,90,4,12,1,100,700);
+      chassis.drive_distance(-30,92,12,12,1,100,500);
 
+      secondstage.spin(forward,100,percent);
+      scorer.spin(forward,100,percent);
 
+      chassis.drive_distance(-30,90,3,3,1,100,600);
 
+      wait(700,msec);
 
-chassis.drive_distance(-30,90,12,12,1,100,500); //replace other one if this works
+      Matchloader.set(false);
 
+      scorer.stop(hold);
 
-secondstage.spin(forward,100,percent);
-scorer.spin(forward,100,percent);
+      chassis.turn_to_angle(190);
 
+      secondstage.spin(forward,100,percent);
 
+      chassis.drive_distance(15.4,180);
 
-chassis.drive_distance(-30,90,3,3,1,100,600);
+      chassis.set_coordinates(0,0,0);
+      chassis.drive_to_point(0,3,6,12,12);
+      Matchloader.set(true);
+      chassis.drive_distance(3.5,0);
 
-wait(600,msec);
-chassis.drive_distance(-30,90,3,3,1,100,200);
+      chassis.set_coordinates(0,0,180);
+      chassis.turn_to_angle(135);
 
-Matchloader.set(false);
+      secondstage.stop();
+      scorer.stop(hold);
 
-scorer.stop(hold);
+      indexer.set(false);
 
+      chassis.drive_distance(-6,135,12,12,1,100,1000);
 
+      secondstage.spin(forward,100,percent);
+      scorer.spin(reverse,65,percent);
 
-chassis.turn_to_angle(190);
+      chassis.drive_distance(-30,135,2,12,1,100,500);
 
+      wait(900,msec);
+      secondstage.stop(hold);
+      scorer.stop(hold);
 
-secondstage.spin(forward,100,percent);
+      chassis.drive_distance(17,135);
 
-//chassis.drive_kp = 5; //delete if needed
+      secondstage.spin(forward,100,percent);
 
+      hardStop.set(true);
+      indexer.set(true);
 
-chassis.drive_distance(15.4,180);
+      chassis.turn_to_angle(90,12,10,10,1000);
+      chassis.drive_distance(31,90,4,12,1,100,1400);
 
-chassis.set_coordinates(0,0,0);
-chassis.drive_to_point(0,3,6,12,12);
-Matchloader.set(true);
-chassis.drive_distance(3.5,0);
+      chassis.drive_distance(-30,87,12,12,1,100,500);
 
+      secondstage.spin(forward,100,percent);
+      scorer.spin(forward,100,percent);
 
-chassis.set_coordinates(0,0,180);
-chassis.turn_to_angle(135);
-
-
-
-
-secondstage.stop();
-scorer.stop(hold);
-
-indexer.set(false);
-//hardStop.set(false);
-
-
-
-
-
-
-
-chassis.drive_distance(-6,135,12,12,1,100,1000);
-
-secondstage.spin(forward,100,percent);
-scorer.spin(reverse,100,percent);
-
-chassis.drive_distance(-30,135,2,12,1,100,500);
-
-
-
-wait(700,msec);
-secondstage.stop(hold);
-scorer.stop(hold);
-
-////
-////
-////
-////
-////
-
-
-//middle goal over
-
-//chassis.set_coordinates(0,0,0);
-//chassis.drive_to_point(-0.3,15.7,4,12,12);
-
-//
-
-chassis.drive_distance(18,130);
-
-//chassis.drive_distance(17.1,135);
-secondstage.spin(forward,100,percent);
-
-hardStop.set(true);
-
-indexer.set(true);
-
-//chassis.turn_to_angle(90,12,5,50,1000);
-
-chassis.turn_to_angle(90,12,10,10,1000);
-chassis.drive_distance(30,90,4,12,1,100,1400);
-
-
-chassis.drive_distance(-30,90,12,12,1,100,500); //replace other one if this works
-
-
-secondstage.spin(forward,100,percent);
-scorer.spin(forward,100,percent);
-
-chassis.drive_distance(-30,87,12,12,1,100,200); //replace other one if this works
-
-chassis.drive_distance(-30,87,3,3,1,100,500);
-
-
-
-
-//chassis.drive_kp = 5; //delete if needed
-
-/*
-chassis.drive_distance(15.9,145);
-indexer.set(false);
-scorer.stop(hold);
-
-indexer.set(false);
-hardStop.set(true);
-
-chassis.turn_to_angle(90,12,5,10,3000);
-*/
-
-//here
-/*
-
-secondstage.spin(forward,100,percent);
-scorer.stop(hold);
-
-chassis.drive_kp = 5;
-chassis.drive_distance(3);
-
-chassis.drive_kp = 1.4;
-
-chassis.drive_distance(30,90,3,12,1,100,1000);
-
-
-
-chassis.drive_kp = 10;
-
-chassis.drive_distance(-9,90,12,12);
-
-secondstage.spin(forward,100,percent);
-scorer.spin(forward,100,percent);
-
-
-chassis.drive_kp = 1.4;
-
-chassis.drive_distance(-30,90,8,3,1,100,300);
-
-chassis.drive_distance(1.1);
-
-//here
-*/
-
-/*
-scorer.stop(hold);
-
-chassis.drive_distance(-30,90,8,3,1,100,500);
-
-secondstage.spin(forward,100,percent);
-scorer.spin(forward,100,percent);
-
-chassis.drive_distance(1.1);
-
-Matchloader.set(false);
-
-
-*/
-
-
-
-
-
-
-
+      chassis.drive_distance(-30,94,12,12,1,100,200);
+      chassis.drive_distance(-30,91,3,3,1,100,500);
 
 
 break;
@@ -1291,190 +1174,120 @@ chassis.drive_distance(-30,180,3,3,1,100,2500);
 
 break;
 
-case 2: //Right Side 7 Ball Descore Auton
-indexer.set(true);
+case 1: //Right Side 7 Ball Descore Auton
 
 scorer.stop(hold);
-secondstage.spin(forward,100,percent);
+      secondstage.spin(forward,100,percent);
 
+      hardStop.set(true);
 
-hardStop.set(true);
+      chassis.drive_distance(6,35,12,10);
+      Matchloader.set(true);
+      chassis.drive_distance(5,50,5,2);
 
-chassis.drive_distance(6,35,12,10);
-Matchloader.set(true);
-chassis.drive_distance(5,50,5,2);
+      Matchloader.set(true);
 
-//chassis.drive_distance(13.3,50,5,2);
+      chassis.turn_to_angle(140,12,5,1,3000);
 
-Matchloader.set(true);
+      chassis.drive_distance(11.7,150,12,12);
 
-chassis.turn_to_angle(140,12,5,1,3000);
+      chassis.turn_to_angle(180);
+      chassis.drive_distance(32,178,3,12,1,100,1200); 
 
+      chassis.drive_distance(-30,180,12,12,1,100,500);
 
+      scorer.spin(forward,100,percent);
+      chassis.drive_distance(-30,180,4,3,1,100,500);
 
-chassis.drive_distance(12.4,150,12,12); //tried 0 settle time change to 13.6
+      Matchloader.set(false);
 
-chassis.turn_to_angle(180);
-chassis.drive_distance(30,180,3,12,1,100,1000); 
+      wait(1500,msec);
 
+      chassis.turn_to_angle(180);
+      chassis.set_coordinates(0,0,0);
+      scorer.stop();
+      chassis.drive_distance(3);
 
+      chassis.drive_distance(-3,50,12,12);
 
-//chassis.drive_distance(15.3,155,12,12); //tried 0 settle time change to 13.6
-
-
-//chassis.drive_distance(30,180,2,12,1,100,1500); 
-
-chassis.drive_distance(-30,180,12,12,1,100,500); //replace other one if this works
-
-
-scorer.spin(forward,100,percent);
-
-chassis.drive_distance(-30,180,4,3,1,100,500);
-
-
-Matchloader.set(false);
-
-
-
-
-wait(1500,msec);
-
-chassis.turn_to_angle(180);
-chassis.set_coordinates(0,0,0);
-scorer.stop();
-chassis.drive_distance(3);
-
-
-
-chassis.drive_distance(-3,50,12,12);
-
-chassis.drive_distance(-9,340);
-
-chassis.turn_to_angle(10);
-
-
-
-
-/*
-chassis.drive_distance(10,70);
-
-chassis.turn_to_angle(180);
-*/
+      chassis.drive_distance(-9,340);
+      chassis.turn_to_angle(10,10);
 
 break;
 
 
-case 1: //Left Side 4+5
+case 0: //Left Side 4+5
 
 hardStop.set(true);
 indexer.set(true);
 
-secondstage.spin(forward,100,percent);
+      secondstage.spin(forward,100,percent);
+      scorer.spin(reverse,10,percent);
 
-scorer.spin(reverse,10,percent);
+      chassis.drive_distance(13.6,310,5,2);
+      chassis.drive_distance(7.5,300,5,2,1,10,3000);
 
-chassis.drive_distance(13.6,310,5,2);
+      wait(500,msec);
 
-chassis.drive_distance(7.2,300,3,2,1,10,3000);
+      chassis.drive_distance(-9.6,285);
 
+      secondstage.spinFor(reverse,50,degrees,false);
 
+      chassis.turn_to_angle(225);
 
-wait(500,msec);
+      secondstage.stop();
+      scorer.stop();
 
+      scorer.spin(reverse,100,percent);
 
+      indexer.set(false);
+      hardStop.set(false);
 
+      Matchloader.set(true);
+      scorer.stop(hold);
 
-chassis.drive_distance(-9.8,285);
+      chassis.drive_distance(-30,225,5,12,1,100,200);
+      chassis.drive_distance(-30,225,2,12,1,100,500);
 
+      secondstage.spin(forward,100,percent);
+      scorer.spin(reverse,60,percent);
 
+      chassis.drive_distance(-30,225,2,12,1,100,500);
 
+      wait(600,msec);
+      secondstage.stop(hold);
+      scorer.stop(hold);
 
-chassis.turn_to_angle(225);
+      chassis.drive_distance(17,225);
 
-secondstage.stop();
-scorer.stop();
+      secondstage.spin(forward,100,percent);
 
-scorer.spin(reverse,100,percent);
+      hardStop.set(true);
+      indexer.set(true);
 
-indexer.set(false);
-hardStop.set(false);
+      chassis.turn_to_angle(180,12,10,10,1000);
+      chassis.drive_distance(30,180,4,12,1,100,1200);
 
+      chassis.drive_distance(-30,180,12,12,1,100,500);
 
+      secondstage.spin(forward,100,percent);
+      scorer.spin(forward,100,percent);
 
-Matchloader.set(true);
-scorer.stop(hold);
+      chassis.drive_distance(-30,180,12,12,1,100,200);
+      chassis.drive_distance(-30,180,3,3,1,100,500);
 
-chassis.drive_distance(-30,225,5,12,1,100,200);
-chassis.drive_distance(-30,225,2,12,1,100,500);
+      wait(1200,msec);
+      chassis.turn_to_angle(180);
+      chassis.set_coordinates(0,0,0);
 
-secondstage.spin(forward,100,percent);
-scorer.spin(reverse,100,percent);
+      chassis.drive_distance(3);
 
-chassis.drive_distance(-30,225,2,12,1,100,500);
+      scorer.stop();
 
+      chassis.drive_distance(-2.5,50,12,12);
 
-
-wait(700,msec);
-secondstage.stop(hold);
-scorer.stop(hold);
-
-
-
-////
-////
-////
-////
-////
-
-
-//middle goal over
-
-//chassis.set_coordinates(0,0,0);
-//chassis.drive_to_point(-0.3,15.7,4,12,12);
-
-//
-indexer.set(true);
-chassis.drive_distance(18.1,220);
-
-//chassis.drive_distance(17.1,135);
-secondstage.spin(forward,100,percent);
-
-hardStop.set(true);
-
-
-//chassis.turn_to_angle(90,12,5,50,1000);
-
-chassis.turn_to_angle(180,12,10,10,1000);
-chassis.drive_distance(30,180,4,12,1,100,1200);
-
-
-
-chassis.drive_distance(-30,180,12,12,1,100,500); //replace other one if this works
-
-
-secondstage.spin(forward,100,percent);
-scorer.spin(forward,100,percent);
-
-
-chassis.drive_distance(-30,180,12,12,1,100,200); //replace other one if this works
-
-chassis.drive_distance(-30,180,3,3,1,100,500);
-
-wait(1200,msec);
-chassis.turn_to_angle(180);
-chassis.set_coordinates(0,0,0);
-
-chassis.drive_distance(3);
-
-scorer.stop();
-
-chassis.drive_distance(-2.6,50,12,12);
-
-chassis.drive_distance(-9,340);
-
-chassis.turn_to_angle(10);
-
-
+      chassis.drive_distance(-9,340);
+      chassis.turn_to_angle(10);
 
 
 
